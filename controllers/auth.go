@@ -18,7 +18,7 @@ func SignUp(c *gin.Context){
 		Password string `binding:"required"`
 	}
 
-	if err := c.Bind(&body); err != nil{
+	if err := c.BindJSON(&body); err != nil{
 		c.JSON(http.StatusBadRequest,gin.H{
 			"error":"Failed to get all values or incorrect data-types were sent",
 		})
@@ -58,7 +58,7 @@ func Login(c *gin.Context){
 		Password string
 	}
 	
-	if err := c.Bind(&body); err != nil{
+	if err := c.BindJSON(&body); err != nil{
 		c.JSON(http.StatusBadRequest,gin.H{
 			"error":"Failed to get all values from body",
 		})
